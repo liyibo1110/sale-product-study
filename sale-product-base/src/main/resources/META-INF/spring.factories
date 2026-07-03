@@ -1,0 +1,4 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.github.liyibo1110.saleproduct.base.mybatis.config.MybatisPlusAutoConfiguration,\
+  com.github.liyibo1110.saleproduct.base.jackson.JacksonAutoConfiguration,\
+  com.github.liyibo1110.saleproduct.base.trace.TraceAutoConfiguration

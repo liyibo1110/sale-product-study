@@ -1,0 +1,2 @@
+dubboExceptionFilter=com.github.liyibo1110.saleproduct.base.dubbo.DubboExceptionFilter
+traceFilter=com.github.liyibo1110.saleproduct.base.trace.TraceDubboFilter
