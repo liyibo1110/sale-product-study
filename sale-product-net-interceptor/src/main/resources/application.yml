@@ -1,0 +1,11 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: sale-product-net-interceptor
+
+rocketmq:
+  name-server: 127.0.0.1:9876
+  producer:
+    group: sale-product-net-interceptor-producer
