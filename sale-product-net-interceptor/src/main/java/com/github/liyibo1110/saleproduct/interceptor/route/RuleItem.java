@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 /**
- * 转发路由单个规则，配置值来自于Nacos Config。
+ * 转发路由单个规则，主要封装了灰度转发比例，配置值来自于Nacos Config。
  * @author liyibo
  * @date 2026-07-06 13:10
  */
