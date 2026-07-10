@@ -18,9 +18,8 @@ public class AdapterRegistry {
     private final Map<String, InterfaceAdapter> adapterMap = new HashMap<>();
 
     public AdapterRegistry(List<InterfaceAdapter> adapters) {
-        for (InterfaceAdapter adapter : adapters) {
+        for (InterfaceAdapter adapter : adapters)
             adapterMap.put(adapter.supportedUri(), adapter);
-        }
     }
 
     /**
