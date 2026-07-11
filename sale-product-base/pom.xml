@@ -10,14 +10,8 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>17</java.version>
-    </properties>
-
     <groupId>com.github.liyibo1110</groupId>
     <artifactId>sale-product-base</artifactId>
-    <version>1.0.0</version>
 
     <dependencies>
 

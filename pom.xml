@@ -8,9 +8,11 @@
     <artifactId>sale-product-study</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
+
     <modules>
         <module>sale-product-net-interceptor</module>
         <module>sale-product-base</module>
+        <module>sale-product-admin</module>
     </modules>
 
     <properties>
