@@ -13,6 +13,7 @@
         <module>sale-product-net-interceptor</module>
         <module>sale-product-base</module>
         <module>sale-product-admin</module>
+        <module>sale-product-data-migrator</module>
     </modules>
 
     <properties>

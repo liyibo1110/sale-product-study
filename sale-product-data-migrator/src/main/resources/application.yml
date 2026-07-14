@@ -1,0 +1,50 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: sale-product-data-migrator
+  datasource:
+    url: jdbc:mysql://localhost:3306/old_products?useUnicode=true&characterEncoding=utf8mb4&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+      config:
+        server-addr: localhost:8848
+        file-extension: yaml
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+dubbo:
+  application:
+    name: sale-product-data-migrator
+  registry:
+    address: nacos://localhost:8848
+  consumer:
+    timeout: 10000
+    retries: 0
+
+xxl:
+  job:
+    admin:
+      addresses: http://localhost:8080/xxl-job-admin
+    accessToken: ""
+    executor:
+      appname: sale-product-data-migrator
+      port: 9999
+
+migration:
+  full-batch-size: 2000
+  incremental-batch-size: 5000
+  sleep-between-batch: 100
+  lookback-seconds: 30
+  full-migration-enabled: true
+  incremental-enabled: true
+  max-retry-count: 5
