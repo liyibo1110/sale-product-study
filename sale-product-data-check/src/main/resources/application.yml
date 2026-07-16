@@ -1,0 +1,90 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: sale-product-data-check
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/demo?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yml
+
+mybatis-plus:
+  mapper-locations: classpath*:mapper/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+
+xxl:
+  job:
+    admin:
+      addresses: http://127.0.0.1:8080/xxl-job-admin
+    accessToken: default_token
+    executor:
+      appname: sale-product-data-check
+      port: 9998
+
+data-check:
+  batch-size: 5000
+  sleep-between-batch: 200
+  full-check-enabled: true
+  daily-check-enabled: true
+  field-check-enabled: true
+  alert-enabled: true
+
+rocketmq:
+  name-server: 127.0.0.1:9876
+  consumer:
+    group: sale-product-checker-interface-verify
+
+interface-check:
+  enabled: true
+  java-service-base-url: "http://127.0.0.1:8082"
+  sample-rate: 100
+  max-daily-check: 100000
+  field-mappings:
+    "/api/product/detail":
+      - phpField: "data.product_name"
+        javaField: "data.merchandiseName"
+      - phpField: "data.product_code"
+        javaField: "data.merchandiseCode"
+      - phpField: "data.status"
+        javaField: "data.status"
+        normalizer: "integer"
+      - phpField: "data.price"
+        javaField: "data.price"
+        normalizer: "price"
+      - phpField: "data.original_price"
+        javaField: "data.originalPrice"
+        normalizer: "price"
+      - phpField: "data.main_image"
+        javaField: "data.mainImage"
+      - phpField: "data.category_id"
+        javaField: "data.categoryId"
+        normalizer: "long"
+      - phpField: "data.brand_id"
+        javaField: "data.brandId"
+        normalizer: "long"
+    "/api/product/list":
+      - phpField: "data[*].product_name"
+        javaField: "data[*].merchandiseName"
+      - phpField: "data[*].product_code"
+        javaField: "data[*].merchandiseCode"
+      - phpField: "data[*].status"
+        javaField: "data[*].status"
+        normalizer: "integer"
+      - phpField: "data[*].price"
+        javaField: "data[*].price"
+        normalizer: "price"
+  ignore-fields:
+    - "update_time"
+    - "create_time"
+    - "id"
