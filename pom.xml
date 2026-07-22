@@ -15,6 +15,7 @@
         <module>sale-product-admin</module>
         <module>sale-product-data-migrator</module>
         <module>sale-product-data-check</module>
+        <module>sale-product-api</module>
     </modules>
 
     <properties>
